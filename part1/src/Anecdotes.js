@@ -11,12 +11,34 @@ const Anecdotes = () => {
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ]
   
-  const [selected, setSelected] = useState(0)
+
+  const pointsInitialArray = new Array(anecdotes.length).fill(0)
+
+  const [points, setPoints] = useState(pointsInitialArray);  /* [0,0,0,5,0,0,0] */  
+  const [selected, setSelected] = useState(0) 
+  const [mostVoted, setMostVoted] = useState(0) // keeping track of the index of the most voted in the votes array.
+  const votes = [...points]
+
+  const handleSelected = () => {
+    setSelected(Math.floor(Math.random() * anecdotes.length))
+  }
+
+  const handleVotes = () => {
+    votes[selected] += 1
+    if (votes[selected] > votes[mostVoted]) {
+      setMostVoted(selected);
+    }
+    setPoints(votes)
+  }
 
   return (
     <div>
       <p>{anecdotes[selected]}</p>
-      <button onClick={() => setSelected(Math.floor(Math.random() * anecdotes.length))}>Next anecdote</button>
+      <p>Has {points[selected]} votes.</p>
+      <button onClick={handleVotes}>Vote</button>
+      <button onClick={handleSelected}>Next anecdote</button>
+      <h1>most voted anecdote</h1>
+      <p>{anecdotes[mostVoted]}</p>
     </div>
   )
 }
