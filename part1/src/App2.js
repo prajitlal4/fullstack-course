@@ -23,12 +23,12 @@ const StatisticLine = (props) => {
 }
 
 const Statistics = (props) => {
-  const all = props.good + props.bad + props.neutral
-  const average = (props.good - props.bad) / all
-  const positive = props.good / all * 100
   const good = props.good
   const neutral = props.neutral
   const bad = props.bad
+  const all = good + bad + neutral
+  const average = (good - bad) / all
+  const positive = good / all * 100
 
   if (all === 0) {
     return (
@@ -68,7 +68,7 @@ const App2 = () => {
         <Button type={bad} name={"bad"} setState={setBad}/>
       </div>
       <div>
-        <Statistics good = {good} neutral = {neutral} bad = {bad} />
+        <Statistics good={good} neutral={neutral} bad={bad} />
       </div>
     </div>
   )

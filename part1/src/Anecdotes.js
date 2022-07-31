@@ -14,7 +14,7 @@ const Anecdotes = () => {
 
   const pointsInitialArray = new Array(anecdotes.length).fill(0)
 
-  const [points, setPoints] = useState(pointsInitialArray);  /* [0,0,0,5,0,0,0] */  
+  const [points, setPoints] = useState(pointsInitialArray);
   const [selected, setSelected] = useState(0) 
   const [mostVoted, setMostVoted] = useState(0) // keeping track of the index of the most voted in the votes array.
   const votes = [...points]
