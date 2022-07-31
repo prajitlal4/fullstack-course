@@ -1,30 +1,74 @@
 import { useState } from 'react'
 
+const Button = (props) => {
+  const type = props.type
+  const name = props.name
+  const setState = props.setState
+
+  return (
+    <button onClick={() => setState(type + 1) }> {name} </button>
+  )
+}
+
+const StatisticLine = (props) => {
+  const text = props.text
+  const value = props.value
+
+  return (
+    <tr>
+      <td>{text}</td>
+      <td>{value}</td>
+    </tr>
+  )
+}
+
+const Statistics = (props) => {
+  const good = props.good
+  const neutral = props.neutral
+  const bad = props.bad
+  const all = good + bad + neutral
+  const average = (good - bad) / all
+  const positive = good / all * 100
+
+  if (all === 0) {
+    return (
+      <div>
+        <h1>Statistics</h1>
+        <p>No feedback given</p>
+      </div>
+    )
+  }
+
+  return (
+    <div>
+      <h1>Statistics</h1>
+      <div>
+        <StatisticLine text={"good"} value={good} />
+        <StatisticLine text={"neutral"} value={neutral} />
+        <StatisticLine text={"bad"} value={bad} />
+        <StatisticLine text={"all"} value={all} />
+        <StatisticLine text={"average"} value={average} />
+        <StatisticLine text={"positive"} value={positive + " %"} />
+      </div>
+    </div>
+  )
+}
+
 const App2 = () => {
-  // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
   const [bad, setBad] = useState(0)
-  let all = good + neutral + bad
-  let average = (good - bad) / all
-  let positive = good / all * 100
 
   return (
     <div>
       <h1>Give feedback</h1>
       <div>
-        <button onClick={() => setGood(good + 1)}>good</button>
-        <button onClick={() => setNeutral(neutral + 1)}>neutral</button>
-        <button onClick={() => setBad(bad + 1)}>bad</button>
+        <Button type={good} name={"good"} setState={setGood}/>
+        <Button type={neutral} name={"neutral"} setState={setNeutral}/>
+        <Button type={bad} name={"bad"} setState={setBad}/>
       </div>
-      <h1>Statistics</h1>
       <div>
-        <p>good {good}</p>
-        <p>neutral {neutral}</p>
-        <p>bad {bad}</p>
-        <p>all {all}</p>
-        <p>average {average}</p>
-        <p>positive {positive}%</p>
+        <Statistics good={good} neutral={neutral} bad={bad} />
       </div>
     </div>
   )
