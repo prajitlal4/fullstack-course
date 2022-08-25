@@ -1,8 +1,7 @@
 import React from 'react'
 
 const Part = ({part}) => {
-  const name = part.name
-  const exercises = part.exercises
+  const {name, exercises} = part
 
   return (
     <div>
@@ -18,13 +17,11 @@ const Header = ({header}) => {
 }
 
 const Content = ({content}) => {
-  const parts = content
-
   return (
     <p>
-    {parts.map(part=>
-      <Part key={part.id} part={part}/>
-    )}
+      {content.map(part=>
+        <Part key={part.id} part={part}/>
+      )}
   </p>
   )
 }

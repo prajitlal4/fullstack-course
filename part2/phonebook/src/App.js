@@ -20,11 +20,15 @@ const App = () => {
     ? persons.filter(person => person.name.toLowerCase().includes(searchName.toLowerCase()))
     : persons
   
+  const checkName = persons.some(person => {
+    if (person.name === newName) {
+      return true
+    }
+    return false
+  })
+
   const addName = (event) => {
     event.preventDefault()
-    console.log('button clicked', event.target)
-
-    console.log(checkName)
 
     if (checkName === true) {
       alert(`${newName} is already added to phonebook` ) 
@@ -36,25 +40,15 @@ const App = () => {
     }
   }
 
-  const checkName = persons.some(person => {
-    if (person.name === newName) {
-      return true
-    }
-    return false
-  })
-
   const handleNameChange = (event) => {
-    console.log(event.target.value)
     setNewName(event.target.value)
   }
   
   const handleNumberChange = (event) => {
-    console.log(event.target.value)
     setNewNumber(event.target.value)
   }
 
   const handleSearchChange = (event) => {
-    console.log(event.target.value)
     if (event.target.value === "") {
       setFilter(false)
       setSearchName(event.target.value)
