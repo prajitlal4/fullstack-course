@@ -10,33 +10,33 @@ const App = () => {
     { name: 'Ada Lovelace', number: '39-44-5323523', id: 2 },
     { name: 'Dan Abramov', number: '12-43-234345', id: 3 },
     { name: 'Mary Poppendieck', number: '39-23-6423122', id: 4 }
-  ]) 
-  const [newName, setNewName] = useState('')
-  const [newNumber, setNewNumber] = useState('')
-  const [searchName, setSearchName] = useState('')
-  const [filter, setFilter] = useState(false)
+  ]);
+  const [newName, setNewName] = useState('');
+  const [newNumber, setNewNumber] = useState('');
+  const [searchName, setSearchName] = useState('');
+  const [filter, setFilter] = useState(false);
 
   const personToShow = filter
     ? persons.filter(person => person.name.toLowerCase().includes(searchName.toLowerCase()))
-    : persons
+    : persons;
   
   const checkName = persons.some(person => {
     if (person.name === newName) {
-      return true
+      return true;
     }
-    return false
-  })
+    return false;
+  });
 
   const addName = (event) => {
-    event.preventDefault()
+    event.preventDefault();
 
     if (checkName === true) {
-      alert(`${newName} is already added to phonebook` ) 
+      alert(`${newName} is already added to phonebook` ) ;
     }
     else {
-      setPersons(persons.concat({name : newName, number: newNumber, id: persons.length+1}))
-      setNewName('')
-      setNewNumber('')
+      setPersons(persons.concat({name : newName, number: newNumber, id: persons.length+1}));
+      setNewName('');
+      setNewNumber('');
     }
   }
 
@@ -50,12 +50,12 @@ const App = () => {
 
   const handleSearchChange = (event) => {
     if (event.target.value === "") {
-      setFilter(false)
-      setSearchName(event.target.value)
+      setFilter(false);
+      setSearchName(event.target.value);
     }
     else {
-      setFilter(true)
-      setSearchName(event.target.value)
+      setFilter(true);
+      setSearchName(event.target.value);
     }
   }
 

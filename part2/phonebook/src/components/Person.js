@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Person = ({person}) => {
-  const {name, number} = person
+  const {name, number} = person;
 
   return (
     <div>

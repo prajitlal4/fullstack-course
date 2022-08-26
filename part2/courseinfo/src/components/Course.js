@@ -1,35 +1,12 @@
 import React from 'react'
 
-const Part = ({part}) => {
-  const {name, exercises} = part
-
-  return (
-    <div>
-      <p>{name} {exercises}</p>
-    </div>
-  )
-}
-
-const Header = ({header}) => {
-  return (
-    <h1>{header}</h1>
-  )
-}
-
-const Content = ({content}) => {
-  return (
-    <p>
-      {content.map(part=>
-        <Part key={part.id} part={part}/>
-      )}
-  </p>
-  )
-}
+import Header from './Header.js'
+import Content from './Content.js'
 
 const Course = ({course}) => {
   const total = course.parts.reduce((a, b) => {
     return {exercises: a.exercises + b.exercises}
-  })
+  });
 
   return (
     <div>

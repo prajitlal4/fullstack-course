@@ -1,11 +1,11 @@
 import React from 'react'
 
 const PersonForm = (props) => {
-  const addName = props.addName
-  const newName = props.newName
-  const newNumber = props.newNumber
-  const handleNameChange = props.handleNameChange
-  const handleNumberChange = props.handleNumberChange
+  const addName = props.addName;
+  const newName = props.newName;
+  const newNumber = props.newNumber;
+  const handleNameChange = props.handleNameChange;
+  const handleNumberChange = props.handleNumberChange;
 
   return (
     <div>

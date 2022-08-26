@@ -1,8 +1,8 @@
 import React from 'react'
 
 const Filter = (props) => {
-  const searchName = props.searchName
-  const handleSearchChange = props.handleSearchChange
+  const searchName = props.searchName;
+  const handleSearchChange = props.handleSearchChange;
 
   return (
     <div>
