@@ -1,6 +1,6 @@
 # fullstack-course
 
-Chapter 1 - "Complete"
+Chapter 1 - "Complete" \n
 Chapter 2
 Chapter 3
 Chapter 4
