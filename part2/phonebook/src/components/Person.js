@@ -1,11 +1,19 @@
 import React from 'react'
+import personService from '../services/persons'
 
 const Person = ({person}) => {
   const {name, number} = person;
 
+  const handleDeleteClick = () => {
+    if (window.confirm(`Delete ${name}?`)) {
+      personService.remove(person.id)
+    }
+  }
+
   return (
     <div>
-      <p>{name} {number}</p>
+      {name} {number}
+      <button onClick={handleDeleteClick}>delete</button>
     </div>
   )
 }
